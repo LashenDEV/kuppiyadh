@@ -33,4 +33,6 @@ Route::group(['middleware' => ['auth', 'role:blogwriter']], function () {
     Route::get('/dashboard/postcreate', [DashboardController::class, 'createPost'])->name('dashboard.postcreate');
 });
 
+Route::post('/uploads',[DashboardController::class, 'store']);
+
 require __DIR__ . '/auth.php';

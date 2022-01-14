@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Uploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,6 +27,19 @@ class DashboardController extends Controller
     public function createPost()
     {
         return view('postCreate');
+    }
+
+    public function store(Request $request)
+    {
+        $data = new Uploads();
+        $file = $request->file;
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $request->file->move('assets',$filename);
+        $data->file = $filename;
+        $data->subject_id = $request->subject_id;
+        $data->file_name = $request->file_name;
+        $data->save();
+        return  redirect()->back();
     }
 
 }
