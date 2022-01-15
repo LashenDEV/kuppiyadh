@@ -33,6 +33,11 @@ Route::group(['middleware' => ['auth', 'role:blogwriter']], function () {
     Route::get('/dashboard/postcreate', [DashboardController::class, 'createPost'])->name('dashboard.postcreate');
 });
 
+//for admin
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
+});
+
 Route::post('/uploads',[DashboardController::class, 'store']);
 
 require __DIR__ . '/auth.php';

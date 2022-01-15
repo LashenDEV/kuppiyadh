@@ -29,6 +29,11 @@ class DashboardController extends Controller
         return view('postCreate');
     }
 
+    public function addSubject()
+    {
+        return view('addSubject');
+    }
+
     public function store(Request $request)
     {
         $data = new Uploads();
