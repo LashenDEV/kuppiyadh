@@ -7,10 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white shadow-sm sm:rounded-lg ">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{url('uploads')}}" method="post" enctype="multipart/form-data"
-                          class="flex justify-between">
+                          class="justify-between sm:flex">
                         @csrf
                         <label>
                             <select name="subject_id"
@@ -26,7 +26,7 @@
                             <span class="mt-2 text-base leading-normal">Select a file</span>
                             <input type='file' class="hidden" name="file"/>
                         </label>
-                        <x-button type="submit">Submit</x-button>
+                        <x-button type="submit" class="flex w-24" >Submit</x-button>
                     </form>
                 </div>
             </div>

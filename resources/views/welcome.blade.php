@@ -31,6 +31,10 @@
     <div>
         <img src="{{asset('images/landing image 1.png')}}" alt="" class="h-60 sm:h-30">
     </div>
+    <p class="p-6 w-full sm:w-1/4 text-justify">An one platform to download your all kuppi study materials and
+        links for the recording videos that you have participated. Here you can easily <a href="{{ route('login') }}" class="text-blue-600">Log in</a> or <a
+            href="{{ route('register') }}"
+            class="text-blue-600">register</a> to explore the benefits.</p>
     @if (Route::has('login'))
         <div class="px-6 py-4 sm:block">
             @auth
@@ -54,7 +58,9 @@
                 @endif
             @endauth
         </div>
-        <div class="absolute text-center inset-x-0 bottom-0 pt-2 pb-2 bg-zinc-200">Made ❤️ by Lashen DEV</div>
+        <div class="absolute text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
+            Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
+        </div>
     @endif
 </div>
 {{--</div>--}}
