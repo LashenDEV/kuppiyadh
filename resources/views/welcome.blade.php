@@ -32,7 +32,7 @@
         <img src="{{asset('images/landing image 1.png')}}" alt="" class="h-60 sm:h-30">
     </div>
     <p class="p-6 w-full sm:w-1/4 text-justify">An one platform to download your all kuppi study materials and
-        links for the recording videos that you have participated. Here you can easily <a href="{{ route('login') }}" class="text-blue-600">Log in</a> or <a
+        links for the recording videos that you have participated. Here you can easily <a href="{{ route('login') }}" class="text-blue-600">log in</a> or <a
             href="{{ route('register') }}"
             class="text-blue-600">register</a> to explore the benefits.</p>
     @if (Route::has('login'))
