@@ -5,7 +5,7 @@
         <div class="shrink-0 m-4">
             <a href="{{ route('dashboard') }}" class="flex justify-center text-center">
                 <!-- Logo -->
-                <img src="{{asset('images/logos/kuppiya download hub.png')}}" class="block h-12 w-auto fill-current text-gray-600 m-2 " />
+                <img src="{{asset('assets/logos/kuppiya download hub.png')}}" class="block h-12 w-auto fill-current text-gray-600 m-2 " />
                 <h2 class="m-3 text-2xl">Kuppiya Download Hub</h2>
             </a>
         </div>

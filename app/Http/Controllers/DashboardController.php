@@ -39,7 +39,7 @@ class DashboardController extends Controller
         $data = new Uploads();
         $file = $request->file;
         $filename = time() . '.' . $file->getClientOriginalExtension();
-        $request->file->move('assets',$filename);
+        $request->file->move('storage',$filename);
         $data->file = $filename;
         $data->subject_id = $request->subject_id;
         $data->file_name = $request->file_name;

@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <img src="{{asset('images/logos/kuppiya download hub.png')}}" class="h-24 w-auto text-gray-700 sm:px-6 sm:h-24"/>
+                <img src="{{asset('assets/logos/kuppiya download hub.png')}}" class="h-24 w-auto text-gray-700 sm:px-6 sm:h-24"/>
             </a>
         </x-slot>
 
