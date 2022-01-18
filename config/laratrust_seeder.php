@@ -17,10 +17,6 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
-        'blogwriter' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
-        ],
         'user' => [
             'profile' => 'r,u',
         ]

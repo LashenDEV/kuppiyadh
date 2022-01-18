@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,16 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
 //for admin
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
-    Route::post('/uploads',[UploadController::class, 'store']);
-    Route::get('/dashboard',[UploadController::class, 'show'])->name('dashboard');
-    Route::get('/download/{file}',[UploadController::class, 'download']);
-    Route::get('dashboard/view/{id}',[UploadController::class, 'view']);
+    Route::post('/dashboard/addsubject',[SubjectController::class,'addSubject']);
+    Route::get('/dashboard/subjects',[SubjectController::class,'viewSubjects'])->name('dashboard.subjects');
 });
+
+Route::post('/uploads',[UploadController::class, 'store']);
+Route::get('/dashboard',[UploadController::class, 'show'])->name('dashboard');
+Route::get('/download/{file}',[UploadController::class, 'download']);
+Route::get('/dashboard/view/{id}',[UploadController::class, 'view']);
+
+
 
 
 require __DIR__ . '/auth.php';

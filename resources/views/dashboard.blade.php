@@ -39,27 +39,27 @@
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="overflow-hidden">
-                            <table class="min-w-full">
-                                <thead class="bg-white border-b">
-                                <tr>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        <b>No</b>
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        <b>File Name</b>
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        <b>View</b>
-                                    </th>
-                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                        <b>Resources</b>
-                                    </th>
-                                    </b>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php($i = 1)
-                                @isset($items)
+                            @isset($items)
+                                <table class="min-w-full">
+                                    <thead class="bg-white border-b">
+                                    <tr>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <b>No</b>
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <b>File Name</b>
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <b>View</b>
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            <b>Resources</b>
+                                        </th>
+                                        </b>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php($i = 1)
                                     @foreach($items as $item)
                                         <tr class="bg-gray-100 border-b">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -78,9 +78,9 @@
                                             </td>
                                         </tr>
                                     @endforeach
-                                @endisset
-                                </tbody>
-                            </table>
+                                    @endisset
+                                    </tbody>
+                                </table>
                         </div>
                     </div>
                 </div>
