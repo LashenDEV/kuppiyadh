@@ -31,7 +31,7 @@
     <main>
         {{ $slot }}
     </main>
-    <div class="absolute text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
+    <div class="fixed text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
         Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
     </div>
 </div>

@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased h-fit m-0 p-0">
 <div class="flex flex-col justify-center items-center min-h-screen max-w-screen sm:items-center py-4">
     {{--    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 sm:max-w-80">--}}
     <div class="flex justify-center flex-col items-center">
@@ -29,9 +29,9 @@
         <h1 class="text-3xl font-medium leading-tight mt-0 mb-2 text-black-600 sm:text-5xl">Kuppiya Download Hub</h1>
     </div>
     <div>
-        <img src="{{asset('assets/images/landing image 1.png')}}" alt="" class="h-60 sm:h-30">
+        <img src="{{asset('assets/images/landing image 1.png')}}" alt="" class="h-44 sm:h-60">
     </div>
-    <p class="p-6 w-full sm:w-1/4 text-justify">An one platform to download your all kuppi study materials and
+    <p class="p-6 w-full sm:w-96 text-justify">An one platform to download your all kuppi study materials and
         links for the recording videos that you have participated. Here you can easily <a href="{{ route('login') }}"
                                                                                           class="text-blue-600">log
             in</a> or <a
@@ -66,7 +66,7 @@
                 @endif
             @endauth
         </div>
-        <div class="absolute text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
+        <div class="fixed text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
             Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
         </div>
     @endif
