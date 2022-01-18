@@ -22,14 +22,6 @@
                             {{ __('My profile') }}
                         </x-nav-link>
                     @endif
-
-                    @if(Auth::user()->hasRole('blogwriter'))
-                        <x-nav-link :href="route('dashboard.postcreate')"
-                                    :active="request()->routeIs('dashboard.postcreate')">
-                            {{ __('Create Post') }}
-                        </x-nav-link>
-                    @endif
-
                     @if(Auth::user()->hasRole('admin'))
                         <x-nav-link :href="route('dashboard.subjects')"
                                     :active="request()->routeIs('dashboard.subjects')">
@@ -41,7 +33,7 @@
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center sm:ml-6 bg-gray-100 h-10 p-3">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button

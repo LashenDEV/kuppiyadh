@@ -34,17 +34,5 @@ class DashboardController extends Controller
         return view('addSubject');
     }
 
-    public function store(Request $request)
-    {
-        $data = new Uploads();
-        $file = $request->file;
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        $request->file->move('storage',$filename);
-        $data->file = $filename;
-        $data->subject_id = $request->subject_id;
-        $data->file_name = $request->file_name;
-        $data->save();
-        return  redirect()->back();
-    }
 
 }

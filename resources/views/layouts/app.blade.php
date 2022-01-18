@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -31,7 +33,7 @@
     <main>
         {{ $slot }}
     </main>
-    <div class="fixed text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
+    <div class="absolute inherit text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
         Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
     </div>
 </div>

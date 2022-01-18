@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,16 +29,14 @@ Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard/my profile', [DashboardController::class, 'myProfile'])->name('dashboard.my profile');
 });
 
-//for blogwriters
-Route::group(['middleware' => ['auth', 'role:blogwriter']], function () {
-    Route::get('/dashboard/postcreate', [DashboardController::class, 'createPost'])->name('dashboard.postcreate');
-});
-
 //for admin
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
+    Route::post('/uploads',[UploadController::class, 'store']);
+    Route::get('/dashboard',[UploadController::class, 'show'])->name('dashboard');
+    Route::get('/download/{file}',[UploadController::class, 'download']);
+    Route::get('dashboard/view/{id}',[UploadController::class, 'view']);
 });
 
-Route::post('/uploads',[DashboardController::class, 'store']);
 
 require __DIR__ . '/auth.php';
