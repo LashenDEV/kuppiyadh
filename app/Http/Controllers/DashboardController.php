@@ -12,10 +12,8 @@ class DashboardController extends Controller
     {
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard');
-        } elseif (Auth::user()->hasRole('blogwriter')) {
-            return view('blogwriterDashboard');
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('dashboard');
+            return view('adminDashboard');
         }
     }
 
