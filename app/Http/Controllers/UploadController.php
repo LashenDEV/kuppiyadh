@@ -30,7 +30,7 @@ class UploadController extends Controller
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard', compact('subjects'));
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('adminDashboard', compact('items'));
+            return view('adminDashboard', compact('items', 'subjects'));
         }
     }
 

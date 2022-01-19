@@ -16,8 +16,9 @@
                                 <select name="subject_id"
                                         class="mt-1 h-12 border-gray-300 focus:border-indigo-300
                              focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm m-2">
-                                    <option value="1">Programming Kuppiya</option>
-                                    <option value="2">Maths Kuppiya</option>
+                                    @foreach($subjects as $subject)
+                                        <option value="{{$subject->id}}">{{$subject->subject_name}}</option>
+                                    @endforeach
                                 </select>
                             </label>
                             <x-input type="text" name="file_name" placeholder="File Name" class="m-2"></x-input>
