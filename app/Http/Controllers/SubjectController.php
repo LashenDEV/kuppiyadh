@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubjectController extends Controller
 {
@@ -24,6 +25,8 @@ class SubjectController extends Controller
     public function viewSubjects()
     {
         $items = Subject::all();
-        return view('addSubject', compact('items'));
+        if (Auth::user()->hasRole('admin')) {
+            return view('addSubject', compact('items'));
+        }
     }
 }

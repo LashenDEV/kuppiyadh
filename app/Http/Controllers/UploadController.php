@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subject;
 use App\Models\Uploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,9 @@ class UploadController extends Controller
     public function show()
     {
         $items = Uploads::all();
+        $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
-            return view('userDashboard');
+            return view('userDashboard', compact('subjects'));
         } elseif (Auth::user()->hasRole('admin')) {
             return view('adminDashboard', compact('items'));
         }

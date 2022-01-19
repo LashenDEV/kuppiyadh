@@ -23,7 +23,7 @@
 @include('layouts.navigation')
 
 <!-- Page Heading -->
-    <header class="bg-white shadow">
+    <header class="bg-indigo-50 shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             {{ $header }}
         </div>
@@ -33,7 +33,7 @@
     <main>
         {{ $slot }}
     </main>
-    <div class="absolute inherit text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
+    <div class="fixed inherit text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
         Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
     </div>
 </div>
