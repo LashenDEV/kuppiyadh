@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     use HasFactory;
+    function getUploads(){
+        return $this->hasMany('App\Models\Uploads');
+    }
 }
