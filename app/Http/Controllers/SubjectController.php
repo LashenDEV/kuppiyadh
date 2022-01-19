@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Auth;
 class SubjectController extends Controller
 {
     //get uploads as same id
-    function index()
+    function index($id)
     {
-        return Subject::find(2)->getUploads;
+        $items = Subject::find($id)->resources;
+        return view('downloads', compact('items'));
     }
 
     public function addSubject(Request $request)

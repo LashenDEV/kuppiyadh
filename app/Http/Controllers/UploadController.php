@@ -14,9 +14,12 @@ class UploadController extends Controller
     {
         $data = new Uploads();
         $file = $request->file;
-        $filename = time() . '.' . $file->getClientOriginalExtension();
-        $request->file->move('storage', $filename);
-        $data->file = $filename;
+        if ($file != null) {
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $request->file->move('storage', $filename);
+            $data->file = $filename;
+        }
+        $data->link = $request->link;
         $data->subject_id = $request->subject_id;
         $data->file_name = $request->file_name;
         $data->save();
@@ -43,6 +46,11 @@ class UploadController extends Controller
     {
         $data = Uploads::find($id);
         return view('view', compact('data'));
+    }
+
+    public function link($link)
+    {
+        return $link;
     }
 
 }

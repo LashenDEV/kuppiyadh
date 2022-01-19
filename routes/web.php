@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard/my profile', [DashboardController::class, 'myProfile'])->name('dashboard.my profile');
-    Route::get('dashboard/data', [SubjectController::class, 'index'])->name('dashboard.data');
+    Route::get('dashboard/resources/{id}', [SubjectController::class, 'index']);
 });
 
 //for admin

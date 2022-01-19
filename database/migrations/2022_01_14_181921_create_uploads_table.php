@@ -17,7 +17,8 @@ class CreateUploadsTable extends Migration
             $table->id();
             $table->integer('subject_id');
             $table->string('file_name');
-            $table->string('file');
+            $table->string('file')->nullable();
+            $table->string('link')->nullable();
             $table->timestamps();
         });
     }

@@ -27,6 +27,7 @@
                                 <span class="text-base leading-normal">Select a file</span>
                                 <input type='file' class="hidden" name="file"/>
                             </label>
+                            <x-input type="url" name="link" placeholder="link" class="m-2"></x-input>
                             <x-button type="submit" class="flex w-20 justify-center text-center m-2">Submit</x-button>
                         </form>
                     </div>
@@ -70,12 +71,20 @@
                                                 {{$item->file_name}}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap hover:text-blue-900">
-                                                <a href="{{url('dashboard/view', $item->id)}}">View<i
-                                                        class="far fa-eye pl-2"></i></a>
+                                                @if($item->file)
+                                                    <a href="{{url('dashboard/view', $item->id)}}">View<i
+                                                            class="far fa-eye pl-2"></i></a>
+                                                @endif
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap hover:text-blue-900">
-                                                <a href="{{url('/download', $item->file)}}">Download<i
-                                                        class="fas fa-file-download pl-2"></i></a>
+                                                @if($item->file)
+                                                    <a href="{{url('/download', $item->file)}}">Download<i
+                                                            class="fas fa-file-download pl-2"></i></a>
+                                                @endif
+                                                @if($item->link)
+                                                    <a href="{{$item->link}}">Link<i
+                                                            class="fas fa-link pl-2"></i></a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
