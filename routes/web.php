@@ -23,6 +23,9 @@ Route::get('/', function () {
 //auth route for both
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard',[UploadController::class, 'show'])->name('dashboard');
+    Route::get('/download/{file}',[UploadController::class, 'download']);
+    Route::get('/dashboard/view/{id}',[UploadController::class, 'view']);
 });
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
@@ -34,12 +37,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
     Route::post('/dashboard/addsubject',[SubjectController::class,'addSubject']);
     Route::get('/dashboard/subjects',[SubjectController::class,'viewSubjects'])->name('dashboard.subjects');
+    Route::post('/uploads',[UploadController::class, 'store']);
 });
 
-Route::post('/uploads',[UploadController::class, 'store']);
-Route::get('/dashboard',[UploadController::class, 'show'])->name('dashboard');
-Route::get('/download/{file}',[UploadController::class, 'download']);
-Route::get('/dashboard/view/{id}',[UploadController::class, 'view']);
 
 
 
