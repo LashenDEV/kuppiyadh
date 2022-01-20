@@ -29,7 +29,7 @@ class UploadController extends Controller
     public function show()
     {
         $upload = Uploads::find(2);
-        $items = Uploads::all();
+        $items = Uploads::paginate(5);
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard', compact('subjects'));

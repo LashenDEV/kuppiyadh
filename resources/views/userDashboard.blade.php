@@ -19,7 +19,6 @@
             {{Auth::user()->name}}
         </h2>
     </x-slot>
-
     @isset($subjects)
         @foreach($subjects as $subject)
             <a href="{{url('dashboard/resources', $subject->id)}}">

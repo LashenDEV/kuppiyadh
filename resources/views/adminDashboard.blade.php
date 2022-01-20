@@ -68,11 +68,10 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @php($i = 1)
                                     @foreach($items as $item)
                                         <tr class="bg-gray-100 border-b">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                {{$i++}}
+                                                {{$item->id}}
                                             </td>
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 {{$item->file_name}}
@@ -90,13 +89,14 @@
                                                 @endif
                                                 @if($item->link)
                                                     <a href="{{$item->link}}">Link<i
-                                                            class="fas fa-link pl-2"></i></a>
+                                                            class="fas fa-link pl-2 text-center "></i></a>
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                                <a href="{{ url('dashboard/edit', $upload->id) }}"><i
+                                                <a href="{{ url('dashboard/edit', $item->id) }}"><i
                                                         class="fas fa-edit text-blue-600 pl-2"></i></a>
-                                                <i class="fas fa-trash text-red-600 pl-2"></i>
+                                                <a href="{{ url('dashboard/delete', $item->id) }}"><i
+                                                        class="fas fa-trash text-red-600 pl-2"></i></a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -109,5 +109,6 @@
             </div>
         </div>
     </div>
+    {{ $items    ->links() }}
 
 </x-app-layout>

@@ -41,6 +41,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/uploads', [UploadController::class, 'store']);
     Route::get('/dashboard/edit/{id}', [UploadController::class, 'edit']);
     Route::put('/dashboard/update/{id}', [UploadController::class, 'update']);
+    Route::get('/dashboard/delete/{id}', [UploadController::class, 'delete']);
 });
 
 
