@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::post('/dashboard/addsubject', [SubjectController::class, 'addSubject']);
     Route::get('/dashboard/subjects', [SubjectController::class, 'viewSubjects'])->name('dashboard.subjects');
     Route::post('/uploads', [UploadController::class, 'store']);
+    Route::get('/dashboard/edit/{id}', [UploadController::class, 'edit']);
+    Route::put('/dashboard/update/{id}', [UploadController::class, 'update']);
 });
 
 

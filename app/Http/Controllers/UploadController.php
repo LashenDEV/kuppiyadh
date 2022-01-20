@@ -28,12 +28,13 @@ class UploadController extends Controller
 
     public function show()
     {
+        $upload = Uploads::find(2);
         $items = Uploads::all();
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard', compact('subjects'));
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('adminDashboard', compact('items', 'subjects'));
+            return view('adminDashboard', compact('items', 'subjects', 'upload'));
         }
     }
 
@@ -45,12 +46,37 @@ class UploadController extends Controller
     public function view($id)
     {
         $data = Uploads::find($id);
-        return view('view', compact('data'));
+        return view('uploads.view', compact('data'));
     }
 
-    public function link($link)
+    public function edit($id)
     {
-        return $link;
+        $subjects = Subject::all();
+        $upload = Uploads::find($id);
+        return view('uploads.editUpload', compact('subjects', 'upload'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = Uploads::find($id);
+        $file = $request->file;
+        if ($file != null) {
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $request->file->move('storage', $filename);
+            $data->file = $filename;
+        }
+        $data->link = $request->link;
+        $data->subject_id = $request->subject_id;
+        $data->file_name = $request->file_name;
+        $data->update();
+        return redirect('/dashboard')->with('status', 'Updated Successfully');
+    }
+
+    public function delete($id)
+    {
+        $upload = Uploads::find($id);
+        $upload->delete();
+        return redirect('/dashboard')->with('status', 'Deleted Successfully');
     }
 
 }

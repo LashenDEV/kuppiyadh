@@ -11,8 +11,9 @@ class SubjectController extends Controller
     //get uploads as same id
     function index($id)
     {
+        $curr = Subject::find($id);
         $items = Subject::find($id)->resources;
-        return view('downloads', compact('items'));
+        return view('uploads.resources', compact('items','curr'));
     }
 
     public function addSubject(Request $request)
