@@ -12,6 +12,10 @@ class UploadController extends Controller
 {
     public function store(Request $request)
     {
+        $request->validate([
+            'file_name' => 'required'
+        ]);
+
         $data = new Uploads();
         $file = $request->file;
         if ($file != null) {
@@ -29,7 +33,7 @@ class UploadController extends Controller
     public function show()
     {
         $upload = Uploads::find(2);
-        $items = Uploads::paginate(5);
+        $items = Uploads::paginate(3);
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard', compact('subjects'));

@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     @if(Auth::user()->hasRole('admin'))
-        <div class="py-12">
+        <div class="pt-12 pb-3">
             @if (session('status'))
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex bg-green-100 h-10 items-center justify-center my-3">
                     <h6 class="alert alert-success">{{ session('status') }}</h6>
@@ -40,7 +40,7 @@
             </div>
         </div>
     @endif
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-3">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white shadow-sm sm:rounded-lg ">
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -107,8 +107,8 @@
                     </div>
                 </div>
             </div>
+            <div class="px-2 py-1">{{ $items    ->links() }}</div>
         </div>
     </div>
-    {{ $items    ->links() }}
 
 </x-app-layout>

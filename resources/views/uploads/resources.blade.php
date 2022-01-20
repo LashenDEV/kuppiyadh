@@ -64,6 +64,7 @@
                     </div>
                 </div>
             </div>
+            <div class="px-2 py-1">{{ $items ->links() }}</div>
         </div>
     </div>
 
