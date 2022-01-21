@@ -63,6 +63,9 @@
                                             <b>Resources</b>
                                         </th>
                                         <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                                            <b>Time</b>
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                                             <b>Controls</b>
                                         </th>
                                     </tr>
@@ -91,6 +94,9 @@
                                                     <a href="{{$item->link}}">Link<i
                                                             class="fas fa-link pl-2 text-center "></i></a>
                                                 @endif
+                                            </td>
+                                            <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                {{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 <a href="{{ url('dashboard/edit', $item->id) }}"><i

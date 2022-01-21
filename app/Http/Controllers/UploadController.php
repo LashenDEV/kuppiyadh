@@ -65,7 +65,7 @@ class UploadController extends Controller
         $data = Uploads::find($id);
         $file = $request->file;
         if ($file != null) {
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = $request->file_name . '.' . $file->getClientOriginalExtension();
             $request->file->move('storage', $filename);
             $data->file = $filename;
         }
