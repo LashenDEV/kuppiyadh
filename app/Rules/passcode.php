@@ -25,7 +25,7 @@ class passcode implements Rule
      */
     public function passes($attribute, $value)
     {
-        $passcode = 'ICT20';
+        $passcode = 'passcode';
         if ($value == $passcode) {
             return true;
         }

@@ -29,7 +29,7 @@
                     <input type='file' class="hidden" name="file" value="{{$upload->file}}"/>
                 </label>
                 <x-input type="url" name="link" placeholder="link" class="m-2" value="{{$upload->link}}"></x-input>
-                <x-button type="submit" class="flex w-20 justify-center text-center m-2">Upload</x-button>
+                <x-button type="submit" class="flex w-20 justify-center text-center m-2">Update</x-button>
                 <a href="{{ route('dashboard') }}">
                     <button type="button">Close</button>
                 </a>

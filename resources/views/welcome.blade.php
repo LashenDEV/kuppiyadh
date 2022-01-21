@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>{{ __('Kuppiya Download Hub') }}</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/logos/kuppiya download hub.png')}}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -67,7 +68,7 @@
             @endauth
         </div>
         <div class="fixed text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
-            Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
+            Made ❤️ by Lashen DEV
         </div>
     @endif
 </div>

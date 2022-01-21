@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('Kuppiya Download Hub') }}</title>
+    <link rel="icon" type="image/x-icon" href="{{asset('assets/logos/kuppiya download hub.png')}}">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -36,7 +37,7 @@
 </div>
 <footer class="bg-gray-200 text-center lg:text-left">
     <div class="text-gray-700 text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
-        Copyright © <?php echo date("Y"); ?> kuppiya download hub. Made ❤️ by Lashen DEV
+        Made ❤️ by Lashen DEV
     </div>
 </footer>
 </body>
