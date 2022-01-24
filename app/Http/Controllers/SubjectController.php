@@ -12,7 +12,7 @@ class SubjectController extends Controller
     function index($id)
     {
         $curr = Subject::find($id);
-        $items = Subject::find($id)->resources()->paginate(7);
+        $items = Subject::find($id)->resources()->orderBy('created_at', 'DESC')->paginate(7);
         return view('uploads.resources', compact('items', 'curr'));
     }
 

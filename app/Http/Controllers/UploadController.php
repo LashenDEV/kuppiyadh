@@ -6,7 +6,7 @@ use App\Models\Subject;
 use App\Models\Uploads;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class UploadController extends Controller
 {
@@ -19,7 +19,8 @@ class UploadController extends Controller
         $data = new Uploads();
         $file = $request->file;
         if ($file != null) {
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+
+            $filename = $request->file_name . '.' . $file->getClientOriginalExtension();
             $request->file->move('storage', $filename);
             $data->file = $filename;
         }
@@ -33,7 +34,7 @@ class UploadController extends Controller
     public function show()
     {
         $upload = Uploads::find(2);
-        $items = Uploads::paginate(3);
+        $items = Uploads::orderBy('created_at', 'DESC')->paginate(3);
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
             return view('userDashboard', compact('subjects'));
@@ -62,9 +63,12 @@ class UploadController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $data = Uploads::find($id);
         $file = $request->file;
         if ($file != null) {
+            $file_path = 'storage/' . $data->file;
+            FILE::delete($file_path);
             $filename = $request->file_name . '.' . $file->getClientOriginalExtension();
             $request->file->move('storage', $filename);
             $data->file = $filename;
@@ -79,6 +83,10 @@ class UploadController extends Controller
     public function delete($id)
     {
         $upload = Uploads::find($id);
+
+        $file_path = 'storage/' . $upload->file;
+        FILE::delete($file_path);
+
         $upload->delete();
         return redirect('/dashboard')->with('status', 'Deleted Successfully');
     }
