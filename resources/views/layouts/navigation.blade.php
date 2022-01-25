@@ -1,12 +1,14 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-full">
         <!--Site Name-->
-        <div class="shrink-0 m-4">
+        <div class="shrink-0 p-4 w-full"
+             style="background-image:url('{{asset("assets/images/header-img.jpg")}}');background-size: 100%; opacity: 0.6">
             <a href="{{ route('dashboard') }}" class="flex justify-center text-center">
                 <!-- Logo -->
-                <img src="{{asset('assets/logos/kuppiya download hub.png')}}" class="block h-12 w-auto fill-current text-gray-600 m-2 " />
-                <h2 class="m-3 text-2xl">Kuppiya Download Hub</h2>
+                <img src="{{asset('assets/logos/kuppiya download hub.png')}}"
+                     class="block h-20 w-auto fill-current text-gray-600 m-2"/>
+                <h2 class="m-3 text-gray-900 text-5xl">Kuppiya Download Hub</h2>
             </a>
         </div>
         <div class="flex justify-between h-16">
@@ -88,6 +90,18 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @if(Auth::user()->hasRole('user'))
+                <x-responsive-nav-link :href="route('dashboard.my profile')"
+                                       :active="request()->routeIs('dashboard.my profile')">
+                    {{ __('My profile') }}
+                </x-responsive-nav-link>
+            @endif
+            @if(Auth::user()->hasRole('admin'))
+                <x-responsive-nav-link :href="route('dashboard.subjects')"
+                                       :active="request()->routeIs('dashboard.subjects')">
+                    {{ __('Subjects')}}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
