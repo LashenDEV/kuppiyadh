@@ -56,6 +56,19 @@
 
 
                             </div>
+                            <!-- Online Status -->
+                            <div class="col-span-6 sm:col-span-4 flex text-center">
+                                @if(Auth::user()->isOnline())
+                                    <label class="block font-medium text-sm text-gray-900 font-bold" for="name">
+                                        Online
+                                    </label><i class="fas fa-circle text-green-400 pl-2"></i>
+                                @else
+                                    <label class="block font-medium text-sm text-gray-900 font-bold" for="name">
+                                        Offline
+                                    </label>
+                                    <i class="fas fa-circle"></i>
+                                @endif
+                            </div>
 
                             <!-- Name -->
                             <div class="col-span-6 sm:col-span-4">
