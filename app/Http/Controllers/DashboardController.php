@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Uploads;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,12 @@ class DashboardController extends Controller
     public function addSubject()
     {
         return view('addSubject');
+    }
+
+    public function viewUsers()
+    {
+        $users = User::paginate(10);
+        return view('showUsers', compact('users'));
     }
 
 
