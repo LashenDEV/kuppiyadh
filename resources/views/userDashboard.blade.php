@@ -27,8 +27,19 @@
                     <div class="overflow-hidden shadow-sm sm:rounded-lg">
                         <a href="{{url('dashboard/resources', $subject->id)}}">
                             <div
-                                class="p-6 bg-white border-b border-gray-200 hover:bg-gray-300 duration-400">
+                                class="p-6 bg-white border-b border-gray-200 hover:bg-gray-300 duration-400 flex justify-between items-center">
                                 {{$subject->subject_name}}
+                                @php($label = 0)
+                                @foreach($upload as $up)
+                                    @if($up->subject_id == $subject->id)
+                                        @if((Carbon\Carbon::parse($up->created_at)->diffInHours())-5 <= 72)
+                                            @if($label == 0)
+                                                <img class="h-8" src="{{asset('assets/images/new.png')}}" alt="">
+                                                @php($label = 1)
+                                            @endif
+                                        @endif
+                                    @endif
+                                @endforeach
                             </div>
                         </a>
                     </div>

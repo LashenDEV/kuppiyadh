@@ -21,57 +21,60 @@
         }
     </style>
 </head>
-<body class="antialiased h-fit m-0 p-0">
-<div class="flex flex-col justify-center items-center min-h-screen max-w-screen sm:items-center py-4">
-    {{--    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 sm:max-w-80">--}}
-    <div class="flex justify-center flex-col items-center">
-        <img src="{{asset('assets/logos/kuppiya download hub.png')}}" alt=""
-             class="h-24 w-auto text-gray-700 sm:px-6 sm:h-24">
-        <h1 class="text-3xl font-medium leading-tight mt-0 mb-2 text-black-600 sm:text-5xl">Kuppiya Download Hub</h1>
-    </div>
-    <div>
-        <img src="{{asset('assets/images/landing image 1.png')}}" alt="" class="h-44 sm:h-60">
-    </div>
-    <p class="p-6 w-full sm:w-96 text-justify">An one platform to download your all kuppi study materials and
-        links for the recording videos that you have participated. Here you can easily <a href="{{ route('login') }}"
-                                                                                          class="text-blue-600">log
-            in</a> or <a
-            href="{{ route('register') }}"
-            class="text-blue-600">register</a> to explore the benefits.</p>
-    @if (Route::has('login'))
-        <div class="px-6 py-4 sm:block">
-            @auth
-                <a href="{{ url('/dashboard') }}"
-                   class="text-sm">
-                    <button type="button"
-                            class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out w-32">
-                        Dashboard
-                    </button>
-                </a>
-            @else
-                <a href="{{ route('login') }}" class="text-sm">
-                    <button type="button"
-                            class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out w-28">
-                        Log in
-                    </button>
-                </a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}"
-                       class="text-sm">
-                        <button type="button"
-                                class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-28">
-                            Register
-                        </button>
-                    </a>
-                @endif
-            @endauth
+<body class="antialiased h-fit m-0 p-0 max-h-screen"
+      style=" background-image: url('{{ asset('assets/images/background.jpg')}}');background-position: center; background-size: cover; ">
+<div>
+    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+        <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+            <div class="flex items-center flex-col w-full">
+                <img src="{{asset('assets/logos/kuppiya download hub.png')}}" alt=""
+                     class="h-24 w-auto text-gray-700 sm:px-6 sm:h-24 mt-4">
+                <h1 class="text-3xl font-medium leading-tight mt-0 mb-2 text-black-600 sm:text-5xl">Kuppiya Download
+                    Hub</h1>
+                <p class="leading-normal text-2xl mb-4 text-white-100">An one platform to download your all kuppi study
+                    materials and links
+                    for the recording videos that you have participated. Here you can easily
+                </p>
+            </div>
+            @if (Route::has('login'))
+                <div class="px-6 py-4 sm:block flex justify-center w-full">
+                    @auth
+                        <a href="{{ url('/dashboard') }}"
+                           class="text-sm">
+                            <button type="button"
+                                    class="mx-auto lg:mx-0 hover:underline bg-red-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Dashboard
+                            </button>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" class="text-sm">
+                            <button type="button"
+                                    class="mx-1 lg:mx-0 hover:underline bg-blue-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                Log in
+                            </button>
+                        </a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}"
+                               class="text-sm">
+                                or
+                                <button type="button"
+                                        class="px-2 lg:mx-0 hover:underline bg-red-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                    Register
+                                </button>
+                            </a>
+                        @endif
+                    @endauth
+                    @endif
+                </div>
         </div>
-        <div class="fixed text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200">
-            Made ❤️ by Lashen DEV
+        <!--Right Col-->
+        <div class="w-full md:w-3/5 py-6 text-center">
+            <img class="w-full md:w-4/5 z-50" src="{{asset('assets/images/hero.png')}}">
         </div>
-    @endif
+    </div>
 </div>
-{{--</div>--}}
+<div class="text-center inset-x-0 bottom-0 pt-1 pb-1 bg-zinc-200 bg-opacity-25">
+    Made ❤️ by Lashen DEV
+</div>
 </body>
 </html>

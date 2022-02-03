@@ -33,11 +33,11 @@ class UploadController extends Controller
 
     public function show()
     {
-        $upload = Uploads::find(2);
+        $upload = Uploads::all();
         $items = Uploads::orderBy('created_at', 'DESC')->paginate(3);
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
-            return view('userDashboard', compact('subjects'));
+            return view('userDashboard', compact('subjects', 'upload'));
         } elseif (Auth::user()->hasRole('admin')) {
             return view('adminDashboard', compact('items', 'subjects', 'upload'));
         }

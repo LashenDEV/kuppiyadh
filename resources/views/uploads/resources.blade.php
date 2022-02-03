@@ -29,7 +29,12 @@
                                         <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                                             <b>Time</b>
                                         </th>
-                                        </b>
+                                        @foreach($items as $item)
+                                            @if(Carbon\Carbon::parse($item->created_at)->diffInHours() <= 72)
+                                                <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                                                </th>
+                                            @endif
+                                        @endforeach
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -61,6 +66,10 @@
                                             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                                 {{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}
                                             </td>
+                                            @if(Carbon\Carbon::parse($item->created_at)->diffInHours() <= 72)
+                                                <td><img class="h-8" src="{{asset('assets/images/new.png')}}" alt="">
+                                                </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                     @endisset
