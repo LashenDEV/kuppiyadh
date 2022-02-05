@@ -24,20 +24,21 @@
 <body class="antialiased h-fit m-0 p-0 max-h-screen"
       style=" background-image: url('{{ asset('assets/images/background.jpg')}}');background-position: center; background-size: cover; ">
 <div>
-    <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    <div class="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center">
         <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-            <div class="flex items-center flex-col w-full">
+            <div class="flex items-center flex-col w-full px-6">
                 <img src="{{asset('assets/logos/kuppiya download hub.png')}}" alt=""
                      class="h-24 w-auto text-gray-700 sm:px-6 sm:h-24 mt-4">
                 <h1 class="text-3xl font-medium leading-tight mt-0 mb-2 text-black-600 sm:text-5xl">Kuppiya Download
                     Hub</h1>
-                <p class="leading-normal text-2xl mb-4 text-white-100">An one platform to download your all kuppi study
+                <p class="leading-normal text-2xl mb-4 text-white-100 justify-center">An one platform for your all kuppi
+                    study
                     materials and links
-                    for the recording videos that you have participated. Here you can easily
+                    for the recorded sessions that you have participated. Here you can easily access
                 </p>
             </div>
             @if (Route::has('login'))
-                <div class="px-6 py-4 sm:block flex justify-center w-full">
+                <div class="py-4 px-4 sm:block w-full">
                     @auth
                         <a href="{{ url('/dashboard') }}"
                            class="text-sm">
@@ -49,16 +50,15 @@
                     @else
                         <a href="{{ route('login') }}" class="text-sm">
                             <button type="button"
-                                    class="mx-1 lg:mx-0 hover:underline bg-blue-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                    class="lg:mx-0 hover:underline bg-blue-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                                 Log in
                             </button>
                         </a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
                                class="text-sm">
-                                or
                                 <button type="button"
-                                        class="px-2 lg:mx-0 hover:underline bg-red-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                                        class="lg:mx-0 hover:underline bg-red-400 text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                                     Register
                                 </button>
                             </a>
