@@ -29,12 +29,9 @@
                                         <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
                                             <b>Time</b>
                                         </th>
-                                        @foreach($items as $item)
-                                            @if(Carbon\Carbon::parse($item->created_at)->diffInHours() <= 72)
-                                                <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                                </th>
-                                            @endif
-                                        @endforeach
+
+                                        <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
+                                        </th>
                                     </tr>
                                     </thead>
                                     <tbody>

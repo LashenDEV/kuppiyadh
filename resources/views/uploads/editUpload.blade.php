@@ -16,8 +16,7 @@
                              focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm m-2"
                     >
                         @foreach($subjects as $subject)
-                            <option value="{{$upload->subject_id}}"
-                                    value="{{$subject->id}}">{{$subject->subject_name}}</option>
+                            <option value="{{$subject->id}}">{{$subject->subject_name}}</option>
                         @endforeach
                     </select>
                 </label>
