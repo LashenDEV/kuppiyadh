@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class SubjectController extends Controller
 {
-    //get uploads as same id
+    //get Uploads as same id
     function index($id)
     {
         $curr = Subject::find($id);
         $items = Subject::find($id)->resources()->orderBy('created_at', 'DESC')->paginate(7);
-        return view('uploads.resources', compact('items', 'curr'));
+        return view('Admin.Uploads.resources', compact('items', 'curr'));
     }
 
     public function addSubject(Request $request)
@@ -28,7 +28,7 @@ class SubjectController extends Controller
     {
         $items = Subject::all();
         if (Auth::user()->hasRole('admin')) {
-            return view('addSubject', compact('items'));
+            return view('Admin.Subjects.addSubject', compact('items'));
         }
     }
 }

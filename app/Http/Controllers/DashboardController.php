@@ -12,15 +12,15 @@ class DashboardController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('user')) {
-            return view('userDashboard');
+            return view('User.userDashboard');
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('adminDashboard');
+            return view('Admin.adminDashboard');
         }
     }
 
     public function myProfile()
     {
-        return view('myProfile');
+        return view('User.myProfile');
     }
 
     public function createPost()
@@ -30,13 +30,13 @@ class DashboardController extends Controller
 
     public function addSubject()
     {
-        return view('addSubject');
+        return view('Admin.Subjects.addSubject');
     }
 
     public function viewUsers()
     {
         $users = User::paginate(10);
-        return view('showUsers', compact('users'));
+        return view('User.showUsers', compact('users'));
     }
 
 

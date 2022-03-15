@@ -13,7 +13,7 @@ class CreateUploadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uploads', function (Blueprint $table) {
+        Schema::create('Uploads', function (Blueprint $table) {
             $table->id();
             $table->integer('subject_id');
             $table->string('file_name');
@@ -30,6 +30,6 @@ class CreateUploadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uploads');
+        Schema::dropIfExists('Uploads');
     }
 }

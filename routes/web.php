@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\NoticesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,8 +25,9 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [UploadController::class, 'show'])->name('dashboard');
-    Route::get('/download/{file}', [UploadController::class, 'download']);
+    Route::get('/download/{id}', [UploadController::class, 'download']);
     Route::get('/dashboard/view/{id}', [UploadController::class, 'view']);
+    Route::get('/dashboard/link/{id}', [UploadController::class, 'link']);
 });
 //for users
 Route::group(['middleware' => ['auth', 'role:user']], function () {
@@ -38,8 +40,9 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
     Route::post('/dashboard/addsubject', [SubjectController::class, 'addSubject']);
     Route::get('/dashboard/subjects', [SubjectController::class, 'viewSubjects'])->name('dashboard.subjects');
+    Route::get('/dashboard/notices', [NoticesController::class, 'viewNotices'])->name('dashboard.notices');
     Route::get('/dashboard/users', [DashboardController::class, 'viewUsers'])->name('dashboard.users');
-    Route::post('/uploads', [UploadController::class, 'store']);
+    Route::post('/Uploads', [UploadController::class, 'store']);
     Route::get('/dashboard/edit/{id}', [UploadController::class, 'edit']);
     Route::put('/dashboard/update/{id}', [UploadController::class, 'update']);
     Route::get('/dashboard/delete/{id}', [UploadController::class, 'delete']);
