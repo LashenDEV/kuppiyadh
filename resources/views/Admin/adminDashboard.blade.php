@@ -40,11 +40,10 @@
             </div>
         </div>
     @endif
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-2"
-         style="margin-right: 25px; margin-left: 25px;">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
         @isset($items)
             @foreach($items as $item)
-                <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg m-3">
+                <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
                     <div
                         class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
                         <img
@@ -72,10 +71,11 @@
                             <a href="{{url('dashboard/link', $item->id)}}">Link<i
                                     class="fas fa-link pl-2"></i></a>
                         @endif</h6>
-
                     <p class="text-xs text-gray-500 text-center mt-3">
                         {{Carbon\Carbon::parse($item->created_at)->diffForHumans()}}
                     </p>
+                    <a href="{{url('dashboard/edit', $item->id)}}">Edit<i
+                            class="far fa-edit pl-2"></i></a>
                 </div>
             @endforeach
         @endisset

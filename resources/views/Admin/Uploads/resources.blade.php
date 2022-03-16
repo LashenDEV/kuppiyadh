@@ -4,10 +4,10 @@
             {{$curr->subject_name}}
         </h2>
     </x-slot>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
         @isset($items)
             @foreach($items as $item)
-                <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg m-3">
+                <div class="flex flex-col items-center justify-center bg-white p-4 shadow rounded-lg">
                     <div class="inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40">
                         <img
                             src="{{asset("assets/images/material.png")}}"

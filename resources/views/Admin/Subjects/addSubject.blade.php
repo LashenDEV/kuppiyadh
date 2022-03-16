@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{url('/dashboard/addsubject')}}" method="post" enctype="multipart/form-data"
-                          class="justify-between sm:flex items-center">
+                          class="justify-center sm:flex items-center">
                         @csrf
                         <x-input type="text" name="subject_name" placeholder="Subject Name" class="m-2 w-2/5"></x-input>
                         <x-button type="submit" class="flex w-20 justify-center text-center m-2">Submit</x-button>
