@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notices;
 use App\Models\Subject;
 use App\Models\Uploads;
+use App\Models\ViewStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class UploadController extends Controller
 {
@@ -34,31 +37,46 @@ class UploadController extends Controller
     public function show()
     {
         $upload = Uploads::all();
-        $items = Uploads::orderBy('created_at', 'DESC')->paginate(3);
+        $notices = Notices::latest()->get();
+        $items = Uploads::orderBy('created_at', 'DESC')->get();
         $subjects = Subject::all();
         if (Auth::user()->hasRole('user')) {
-            return view('userDashboard', compact('subjects', 'upload'));
+            return view('User.userDashboard', compact('subjects', 'upload', 'notices'));
         } elseif (Auth::user()->hasRole('admin')) {
-            return view('adminDashboard', compact('items', 'subjects', 'upload'));
+            return view('Admin.adminDashboard', compact('items', 'subjects', 'upload'));
         }
     }
 
-    public function download(Request $request, $file)
+    public function download(Request $request, $id)
     {
-        return response()->download(public_path('storage/' . $file));
+        $data = Uploads::find($id);
+        ViewStatus::create([
+            'user_id' => Auth::user()->id,
+            'material_id' => $data->id,
+        ]);
+        return response()->download(public_path('storage/' . $data->file));
     }
 
     public function view($id)
     {
         $data = Uploads::find($id);
-        return view('uploads.view', compact('data'));
+        $status = ViewStatus::where([['user_id', Auth::user()->id], ['material_id', $data->id]])->first();
+
+        if (!$status) {
+            ViewStatus::create([
+                'user_id' => Auth::user()->id,
+                'material_id' => $data->id,
+            ]);
+        }
+        return view('Admin.Uploads.view', compact('data'));
+
     }
 
     public function edit($id)
     {
         $subjects = Subject::all();
         $upload = Uploads::find($id);
-        return view('uploads.editUpload', compact('subjects', 'upload'));
+        return view('Admin.Uploads.editUpload', compact('subjects', 'upload'));
     }
 
     public function update(Request $request, $id)
@@ -91,4 +109,18 @@ class UploadController extends Controller
         return redirect('/dashboard')->with('status', 'Deleted Successfully');
     }
 
+    public function link($id)
+    {
+        $data = Uploads::find($id);
+        $status = ViewStatus::where([['user_id', Auth::user()->id], ['material_id', $data->id]])->first();
+
+        if (!$status) {
+            ViewStatus::create([
+                'user_id' => Auth::user()->id,
+                'material_id' => $data->id,
+            ]);
+        }
+
+        return Redirect::to($data->link);
+    }
 }
