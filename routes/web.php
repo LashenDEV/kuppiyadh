@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\NoticesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UploadController;
-use App\Http\Controllers\NoticesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,12 +40,18 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/dashboard/subjects', [DashboardController::class, 'addSubject'])->name('dashboard.subjects');
     Route::post('/dashboard/addsubject', [SubjectController::class, 'addSubject']);
     Route::get('/dashboard/subjects', [SubjectController::class, 'viewSubjects'])->name('dashboard.subjects');
-    Route::get('/dashboard/notices', [NoticesController::class, 'viewNotices'])->name('dashboard.notices');
     Route::get('/dashboard/users', [DashboardController::class, 'viewUsers'])->name('dashboard.users');
     Route::post('/Uploads', [UploadController::class, 'store']);
     Route::get('/dashboard/edit/{id}', [UploadController::class, 'edit']);
     Route::put('/dashboard/update/{id}', [UploadController::class, 'update']);
     Route::get('/dashboard/delete/{id}', [UploadController::class, 'delete']);
+
+//    Notices
+    Route::get('/dashboard/notices', [NoticesController::class, 'view'])->name('dashboard.notices');
+    Route::post('/dashboard/notice/add/', [NoticesController::class, 'Add'])->name('notice.add');
+    Route::get('/dashboard/notices/delete/{id}', [NoticesController::class, 'delete'])->name('notice.delete');
+    Route::get('/dashboard/notices/edit/{id}', [NoticesController::class, 'edit'])->name('notice.edit');
+    Route::put('/dashboard/notices/update/{id}', [NoticesController::class, 'update'])->name('notice.update');
 });
 
 

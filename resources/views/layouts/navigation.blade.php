@@ -29,6 +29,10 @@
                                     :active="request()->routeIs('dashboard.subjects')">
                             {{ __('Subjects') }}
                         </x-nav-link>
+                        <x-nav-link :href="route('dashboard.notices')"
+                                    :active="request()->routeIs('dashboard.notices')">
+                            {{ __('Notices') }}
+                        </x-nav-link>
                         <x-nav-link :href="route('dashboard.users')"
                                     :active="request()->routeIs('dashboard.users')">
                             {{ __('Users') }}
@@ -104,6 +108,10 @@
                 <x-responsive-nav-link :href="route('dashboard.subjects')"
                                        :active="request()->routeIs('dashboard.subjects')">
                     {{ __('Subjects')}}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('dashboard.notices')"
+                                       :active="request()->routeIs('dashboard.notices')">
+                    {{ __('Notices')}}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('dashboard.users')"
                                        :active="request()->routeIs('dashboard.users')">

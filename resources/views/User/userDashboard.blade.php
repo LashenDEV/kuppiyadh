@@ -31,16 +31,13 @@
         <div>
             <div class="ticker-wrapper-h sm:w-11/12 w-9/12 overflow-hidden">
                 <ul class="news-ticker-h">
-                    <li><i class="fas fa-check-double text-gray-900 px-2"></i> Since the website has been changed to the
-                        new server, now we
-                        have enough storage capacity. Hope
-                        to
-                        upload materials as much as possible.
-                    </li>
-                    <li><i class="fas fa-check-double text-gray-900 px-2"></i> In this section we hope to show you the
-                        latest updates of
-                        your web site
-                    </li>
+                    @isset($notices)
+                        @foreach($notices as $notice)
+                            <li><i class="fas fa-check-double text-gray-900 px-2"></i>
+                                {{$notice->notice_name}}
+                            </li>
+                        @endforeach
+                    @endisset
                 </ul>
             </div>
         </div>
@@ -73,6 +70,5 @@
             </div>
         @endforeach
     @endisset
-    {{--    <div class="px-2 py-1">{{ $subjects ->links() }}</div>--}}
     <br>
 </x-app-layout>
